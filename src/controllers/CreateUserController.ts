@@ -3,7 +3,7 @@ import { CreateUserService } from "../services/CreateUserService";
 
 class CreateUserController {
   async handle(request: Request, response: Response) {
-    const { username, email, telefone, cidade, estado } = request.body;
+    const { username, email, telefono, ciudad, estado } = request.body;
 
     const createUserService = new CreateUserService();
 
@@ -11,17 +11,17 @@ class CreateUserController {
       await createUserService.create({
         username,
         email,
-        telefone,
-        cidade,
+        telefono,
+        ciudad,
         estado
       }).then(() => {
         response.render("message", {
-          message: "Usuário cadastrado com sucesso"
+          message: "Usuario registrado correctamente"
         });
       });
     } catch (err) {
       response.render("message", {
-        message: `Erro ao cadastrar usuário: ${err.message}`
+        message: `Error al registrar el usuario: ${err.message}`
       });
     }
 

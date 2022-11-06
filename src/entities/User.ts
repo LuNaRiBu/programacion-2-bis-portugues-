@@ -14,10 +14,10 @@ class User {
   email: string;
 
   @Column()
-  telefone: string;
+  telefono: string;
 
   @Column()
-  cidade: string;
+  ciudad: string;
 
   @Column()
   estado: string;

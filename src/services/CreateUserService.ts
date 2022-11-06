@@ -4,15 +4,15 @@ import { UsersRepository } from "../repositories/UsersRepository";
 interface IUser {
   username: string;
   email: string;
-  telefone: string;
-  cidade: string;
+  telefono: string;
+  ciudad: string;
   estado: string;
 }
 
 class CreateUserService {
-  async create({ username, email, telefone, cidade, estado }: IUser) {
-    if (!username || !email || !telefone || !cidade || !estado) {
-      throw new Error("Por favor preencha todos os campos");
+  async create({ username, email, telefono, ciudad, estado }: IUser) {
+    if (!username || !email || !telefono || !ciudad || !estado) {
+      throw new Error("Por favor rellan todos los campos");
     }
 
     const usersRepository = getCustomRepository(UsersRepository);
@@ -20,16 +20,16 @@ class CreateUserService {
     const usernameAlreadyExists = await usersRepository.findOne({ username });
 
     if (usernameAlreadyExists) {
-      throw new Error("Username já está cadastrado");
+      throw new Error("El nombre de usuario ya esta registrado");
     }
 
     const emailAlreadyExists = await usersRepository.findOne({ email });
 
     if (emailAlreadyExists) {
-      throw new Error("Email já está cadastrado");
+      throw new Error("Correo ya registrado");
     }
 
-    const user = usersRepository.create({ username, email, telefone, cidade, estado });
+    const user = usersRepository.create({ username, email, telefono, ciudad, estado });
 
     await usersRepository.save(user);
 

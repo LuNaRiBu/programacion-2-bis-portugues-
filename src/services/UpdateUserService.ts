@@ -6,19 +6,19 @@ interface IUser {
   id: string
   username: string;
   email: string;
-  telefone: string;
-  cidade: string;
+  telefono: string;
+  ciudad: string;
   estado: string;
 }
 
 class UpdateUserService {
-  async update({ id, username, email, telefone, cidade, estado }: IUser) {
+  async update({ id, username, email, telefono, ciudad, estado }: IUser) {
     const usersRepository = getCustomRepository(UsersRepository);
 
     const user = await usersRepository
       .createQueryBuilder()
       .update(User)
-      .set({ username, email, telefone, cidade, estado })
+      .set({ username, email, telefono, ciudad, estado })
       .where("id = :id", { id })
       .execute();
 

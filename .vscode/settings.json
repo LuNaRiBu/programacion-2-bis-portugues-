@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "cesit 2022",
+            "database": "${workspaceFolder:programacion-2-bis-portugues-}/src/database/database.sqlite"
+        }
+    ]
+}

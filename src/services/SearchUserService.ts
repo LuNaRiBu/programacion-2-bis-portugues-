@@ -4,7 +4,7 @@ import { UsersRepository } from "../repositories/UsersRepository";
 class SearchUserService {
   async search(search: string) {
     if (!search) {
-      throw new Error("Por favor preencha o campo de busca");
+      throw new Error("Por favor complete el campo de busqueda");
     }
 
     const usersRepository = getCustomRepository(UsersRepository);
@@ -13,8 +13,8 @@ class SearchUserService {
       .createQueryBuilder()
       .where("username like :search", { search: `%${search}%` })
       .orWhere("email like :search", { search: `%${search}%` })
-      .orWhere("telefone like :search", { search: `%${search}%` })
-      .orWhere("cidade like :search", { search: `%${search}%` })
+      .orWhere("telefono like :search", { search: `%${search}%` })
+      .orWhere("ciudad like :search", { search: `%${search}%` })
       .orWhere("estado like :search", { search: `%${search}%` })
       .getMany();
 
